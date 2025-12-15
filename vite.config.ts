@@ -1,7 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ command }) => ({
   plugins: [react()],
-  base: mode === "production" ? "/04-react-query/" : "/",
+  base:
+    command === "build" && process.env.GITHUB_PAGES ? "/04-react-query/" : "/",
 }));
